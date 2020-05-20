@@ -1,5 +1,5 @@
 <h1>New Company</h1>
 
-<%= render 'form', company: @company %>
+<%= render partial: 'form', locals: { company: @company, names: @company_names }  %>
 
 <%= link_to 'Back', companies_path %>

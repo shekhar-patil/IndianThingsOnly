@@ -13,7 +13,12 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <select id="position" style="width: 15%" placeholder='select name'>
+      <option value='select' ></option>
+      <% names.each do |name| %>
+        <option><%= name %></option>
+      <% end %>
+    </select>
   </div>
 
   <div class="field">

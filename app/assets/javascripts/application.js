@@ -16,4 +16,26 @@
 //= require bootstrap
 //= require activestorage
 //= require turbolinks
+//= require select2
 //= require_tree .
+
+$(document).ready(function(){
+  // Turn on js-selectable class so that it becomes SELCT 2 tag
+
+  $('#position').select2({
+    allowClear: true,
+    theme: "bootstrap",
+    width: 200,
+    tags: true,
+    createTag: function (params) {
+      return {
+        id: params.term,
+        text: params.term,
+        newOption: true
+      }
+    }
+    // If you are using Bootstrap, please add　`theme: "bootstrap"` too.
+  });
+
+
+});

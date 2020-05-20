@@ -15,6 +15,7 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   def new
     @company = Company.new
+    @company_names = Company.pluck(:name)
   end
 
   # GET /companies/1/edit
