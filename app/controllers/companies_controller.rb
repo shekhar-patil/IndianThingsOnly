@@ -25,11 +25,11 @@ class CompaniesController < ApplicationController
   # POST /companies
   # POST /companies.json
   def create
-    @company = Company.new(company_params)
+    @company = Company.new(load_params)
 
     respond_to do |format|
       if @company.save
-        format.html { redirect_to @company, notice: 'Company was successfully created.' }
+        format.html { redirect_to @company, notice: 'Submitted for the review.' }
         format.json { render :show, status: :created, location: @company }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class CompaniesController < ApplicationController
   # PATCH/PUT /companies/1.json
   def update
     respond_to do |format|
-      if @company.update(company_params)
+      if current_user.present? && @company.update(company_params)
         format.html { redirect_to @company, notice: 'Company was successfully updated.' }
         format.json { render :show, status: :ok, location: @company }
       else
@@ -55,10 +55,23 @@ class CompaniesController < ApplicationController
   # DELETE /companies/1
   # DELETE /companies/1.json
   def destroy
-    @company.destroy
+    @company.destroy if current_user.present?
     respond_to do |format|
       format.html { redirect_to companies_url, notice: 'Company was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def company_provider
+    @companies = Company.where(is_approved: true)
+    if params[:search].present?
+      @companies = Company.where("name ILIKE :name", name: "%#{params[:search]}%")
+    end
+
+    @companies = @companies.map { |c| { id: c.key, text: c.name} }
+
+    respond_to do |format|
+      format.json { render json: @companies.to_json }
     end
   end
 
@@ -70,6 +83,16 @@ class CompaniesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def company_params
-      params.require(:company).permit(:name, :discription, :picture)
+      params.require(:company).permit(:name, :discription, :picture, :key)
+    end
+
+    def load_params
+      {
+        name: params['company']['name'],
+        discription: params['company']['discription'],
+        picture: params['company']['picture'],
+        key: params['company']['name'].parameterize.underscore,
+        is_approved: false
+      }
     end
 end

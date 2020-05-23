@@ -1,4 +1,4 @@
-<%= form_with(model: company, local: true) do |form| %>
+<%= form_for @company, local: true do |form| %>
   <% if company.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
@@ -13,12 +13,7 @@
 
   <div class="field">
     <%= form.label :name %>
-    <select id="position" style="width: 15%" placeholder='select name'>
-      <option value='select' ></option>
-      <% names.each do |name| %>
-        <option><%= name %></option>
-      <% end %>
-    </select>
+    <%= form.select :name, [], {}, {class: "form-control select2", data: { init: (form.object.name.present? ? [form.object.name, form.object.name.parameterize.underscore] : []), url: '/company_provider' }} %>
   </div>
 
   <div class="field">
@@ -31,7 +26,20 @@
     <%= form.text_field :picture %>
   </div>
 
+  <% if current_user.present? %>
+    <div class="field">
+      <%= form.label "Approved" %>
+      <%= form.check_box :is_approved, {}, true, false %>
+    </div>
+  <% end %>
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Update', class: 'submit-form'%>
   </div>
+<% end %>
+
+<%= javascript_tag do %>
+  $(document).ready(function(){
+    select2($('.select2'));
+  });
 <% end %>
