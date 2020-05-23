@@ -10,7 +10,7 @@ var select2 = function($el) {
     allowClear: true,
     theme: "bootstrap",
     placeholder: placeholder,
-    width: 200,
+    width: 500,
     tags: true,
     createTag: function (params) {
       return {

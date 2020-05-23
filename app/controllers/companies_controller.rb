@@ -1,8 +1,9 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
-  # GET /companies
-  # GET /companies.json
+  def home
+  end
+
   def index
     @companies = Company.all
   end

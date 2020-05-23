@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  root to: 'companies#home'
   resources :categories
   devise_for :users
-  root to: redirect('/companies')
   resources :companies
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # Ajax call for the companies provider
   get 'company_provider', to: 'companies#company_provider', as: 'data_provider'
 end
