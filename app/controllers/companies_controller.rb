@@ -5,7 +5,7 @@ class CompaniesController < ApplicationController
   end
 
   def index
-    @companies = Company.all
+    @companies = Company.paginate(page: params[:page], per_page: 5)
   end
 
   # GET /companies/1
@@ -63,13 +63,26 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def not_found
+  end
+
+  def search_company
+    key = params['company']['name'].parameterize.underscore rescue nil
+    @company = Company.find_by(key: key)
+    if @company
+      redirect_to company_url(@company)
+    else
+      redirect_to not_found_path
+    end
+  end
+
   def company_provider
     @companies = Company.where(is_approved: true)
     if params[:search].present?
       @companies = Company.where("name ILIKE :name", name: "%#{params[:search]}%")
     end
 
-    @companies = @companies.map { |c| { id: c.key, text: c.name} }
+    @companies = @companies.paginate(page: params[:page], per_page: 5).map { |c| { id: c.key, text: c.name} }
 
     respond_to do |format|
       format.json { render json: @companies.to_json }

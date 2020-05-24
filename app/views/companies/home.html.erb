@@ -1,9 +1,16 @@
 <center/>
 <div class="home-page">
   <h1>Is it Indian Company?</h1>
+  <br/>
   <div class='form-group'>
-    <select class='form-group select2' data-url='/company_provider' placeholder="Search Companies">
-    </select>
+    <%= form_for Company.new, url: { action: :search_company }, method: 'post', remote: true do |form| %>
+      <%= form.select :name, [], {}, {class: "select2", data: { url: '/company_provider' }} %>
+      <br/>
+      <div class="actions">
+        <%= form.submit 'Search', class: 'btn btn-info btn-sm'%>
+      </div>
+    <% end %>
+
     <br/><br/>
   </div>
 
@@ -14,7 +21,7 @@
   <br/><br/>
 
   <h4>
-    Start using Indian products. Ban all chines and foreign products.
+    Start using Indian products. Ban all chinese and foreign products.
   </h4>
 
   <br/>
@@ -27,6 +34,8 @@
     <div>
       <%= button_to "All Indian Companies", companies_url, method: :get, class: 'btn btn-outline-success' %>
     </div>
+
+    <br/>
     <div>
       <%= button_to "Suggest Indian Company", new_company_url, method: :get, class: 'btn btn-outline-success' %>
     </div>

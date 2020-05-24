@@ -4,7 +4,7 @@
     <% @companies.each do |company| %>
       <div class = "mainbox">
         <div class = "box0">
-          <div><h2><%= company.name %></h2></div>
+          <div><h3><%= company.name %></h3></div>
         </div>
         <hr>
         <div class="box1 justify-content-between">
@@ -13,18 +13,18 @@
           </div>
           <div class="box1-2">
             <div class="category">
-              Category: generaral category
+              Category: <%= company.categories.present? ? company.categories.pluck(:name) : 'Not added yet' %>
             </div>
             <br/>
             <div class="box2">
               <%= company.discription %>
             </div>
-            <br/><br/>
+            <br/>
             <div class="box3">
               <% if company.is_indian %>
-                <h4 style="color:green">This is Indian Company<h4>
+                <h4 class="is-indian" style="color:green">This is Indian Company<h4>
               <% else %>
-                <h4 style="color:green">This not the Indian Company<h4>
+                <h4 class="is-indian" style="color:green">This not the Indian Company<h4>
               <% end %>
             </div>
           </div>
@@ -44,11 +44,14 @@
     <% end %>
   <% end %>
 
-
-<br>
+  <div class="row margin-twenty5-zero margin-b-zero pagination-row">
+    <div class="col-lg-8 col-md-8 col-sm-7 col-xs-6 padding-zero">
+      <ul class="pagination">
+        <li class="disabled"> <%= will_paginate(@companies,:previous_label => "&laquo;", :next_label => "&raquo;",:class=>"small-font",:outer_window => 1,:inner_window => 0) %></li>
+      </ul>
+    </div>
+  </div>
 
 <div>
   <%= button_to "Suggest Indian Company", new_company_url, method: :get, class: 'btn btn-outline-success btn-lg' %>
 </div>
-
-<%= social_share_button_tag %>
