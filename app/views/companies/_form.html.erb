@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.select :name, [], {}, {class: "form-control select2", data: { init: (form.object.name.present? ? [form.object.name, form.object.name.parameterize.underscore] : []), url: '/company_provider' }} %>
+    <%= form.select :name, [], {}, {class: "select2", data: { init: (form.object.name.present? ? [form.object.name, form.object.name.parameterize.underscore] : []), url: '/company_provider' }} %>
   </div>
 
   <div class="field">

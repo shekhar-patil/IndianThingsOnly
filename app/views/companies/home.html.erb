@@ -1,8 +1,8 @@
+<center/>
 <div class="home-page">
   <h1>Is it Indian Company?</h1>
-  <br/><br/>
-  <div class='form-group' style="width:100%">
-    <select class='form-group select2' style="width:100%" data-url='/company_provider' placeholder="Search Companies">
+  <div class='form-group'>
+    <select class='form-group select2' data-url='/company_provider' placeholder="Search Companies">
     </select>
     <br/><br/>
   </div>
@@ -21,14 +21,14 @@
   <h1>"आत्मनिर्भर भारत!!"</h1>
 
   <br/><br/>
-  <div style="width:50%">
-  <div class="d-flex justify-content-between">
+
+  <div>
+
     <div>
-      <%= button_to "All Indian Companies", companies_url, method: :get, class: 'btn btn-outline-success btn-lg' %>
+      <%= button_to "All Indian Companies", companies_url, method: :get, class: 'btn btn-outline-success' %>
     </div>
     <div>
-      <%= button_to "Suggest Indian Company", new_company_url, method: :get, class: 'btn btn-outline-success btn-lg' %>
+      <%= button_to "Suggest Indian Company", new_company_url, method: :get, class: 'btn btn-outline-success' %>
     </div>
-    </div>
-  </div>
-</div>
+
+

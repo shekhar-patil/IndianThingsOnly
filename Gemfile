@@ -18,6 +18,7 @@ gem 'devise'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'select2-rails'
+gem 'social-share-button'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 

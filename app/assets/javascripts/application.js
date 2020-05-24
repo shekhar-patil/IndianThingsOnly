@@ -18,6 +18,7 @@
 //= require turbolinks
 //= require select2-full
 //= require libs/common.js
+//= require social-share-button
 //= require_tree .
 
 $(document).ready(function(){
