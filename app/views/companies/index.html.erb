@@ -12,6 +12,7 @@
   <tbody>
     <% @companies.each do |company| %>
       <tr>
+        <%= image_tag(company.picture_url, width: 600) if company.picture.present? %>
         <td><%= company.name %></td>
         <td><%= company.discription %></td>
         <td><%= company.picture %></td>

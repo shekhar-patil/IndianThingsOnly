@@ -16,3 +16,26 @@
  *= require select2-bootstrap
 
  */
+body {
+  margin: 0;
+  padding: 0;
+
+}
+
+nav {
+  color:inherit;
+  background-color: #6767;
+}
+
+@media only screen and (max-width: 768px) {
+  .home-page {
+    margin-top: 500px;
+  }
+}
+
+.love-tag {
+  color: red;
+}
+
+
+
