@@ -1,0 +1,10 @@
+# config/cloudinary.yml
+development:
+  cloud_name: "dmgz7jxoz"
+  api_key: "375323357976654"
+  api_secret: "f8XD3Orghl0_UEWpKYzAgYlJhr8"
+
+production:
+  cloud_name: "dmgz7jxoz"
+  api_key: "375323357976654"
+  api_secret: "f8XD3Orghl0_UEWpKYzAgYlJhr8"

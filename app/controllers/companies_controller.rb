@@ -5,6 +5,7 @@ class CompaniesController < ApplicationController
   end
 
   def index
+    @companies = Company.where( )
     @companies = Company.paginate(page: params[:page], per_page: 5)
   end
 
@@ -16,7 +17,7 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   def new
     @company = Company.new
-    @company_names = Company.pluck(:name)
+    @categories = Category.all
   end
 
   # GET /companies/1/edit
@@ -97,7 +98,7 @@ class CompaniesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def company_params
-      params.require(:company).permit(:name, :discription, :picture, :key)
+      params.require(:company).permit(:name, :discription, :key, :picture, :picture_cache)
     end
 
     def load_params

@@ -12,19 +12,33 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+   <label>Company Name</label>
     <%= form.select :name, [], {}, {class: "select2", data: { init: (form.object.name.present? ? [form.object.name, form.object.name.parameterize.underscore] : []), url: '/company_provider' }} %>
   </div>
 
   <div class="field">
-    <%= form.label :discription %>
+   <label>Company Description</label>
     <%= form.text_area :discription %>
   </div>
 
   <div class="field">
-    <%= form.label :picture %>
+    <label>Company Logo</label>
+    <%= form.hidden_field :picture_cache %>
     <%= form.file_field :picture %>
   </div>
+
+  <%# <div class="btn-group">
+    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Category
+    </button>
+    <div class="dropdown-menu">
+    <a class="dropdown-item" >Applicaton</a>
+    <a class="dropdown-item" >Electronics</a>
+    <a class="dropdown-item" >Grossary</a>
+    <div class="dropdown-divider"></div>
+
+  </div>
+</div> %>
+
 
   <% if current_user.present? %>
     <div class="field">
