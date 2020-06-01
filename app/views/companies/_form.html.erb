@@ -27,25 +27,17 @@
     <%= form.file_field :picture %>
   </div>
 
-  <%# <div class="btn-group">
-    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Category
-    </button>
-    <div class="dropdown-menu">
-    <a class="dropdown-item" >Applicaton</a>
-    <a class="dropdown-item" >Electronics</a>
-    <a class="dropdown-item" >Grossary</a>
-    <div class="dropdown-divider"></div>
-
-  </div>
-</div> %>
-
-
   <% if current_user.present? %>
     <div class="field">
       <%= form.label "Approved" %>
-      <%= form.check_box :is_approved, {}, true, false %>
+      <%= form.check_box :is_approved, { checked: form.object.is_approved }, true, false %>
     </div>
   <% end %>
+
+  <div class="field">
+    <%= form.label "Is it Indian company" %>
+    <%= form.check_box :is_approved, { checked: form.object.is_indian }, true, false %>
+  </div>
 
   <div class="actions">
     <%= form.submit 'Update', class: 'submit-form'%>

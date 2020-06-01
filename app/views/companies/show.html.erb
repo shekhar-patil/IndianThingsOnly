@@ -1,47 +1,47 @@
 <center/>
 <p id="notice"><%= notice %></p>
-  <tbody>
-      <div class = "mainbox">
-        <div class = "box0">
-          <div><h2><%= @company.name %></h2></div>
-        </div>
-        <hr>
-        <div class="box1 justify-content-between">
-          <div >
-            <div class = "image" ><img ><%= image_tag(@company.picture_url, width: 600) if @company.picture.present? %></img></div>
-          </div>
 
-          <div class="box1-2">
-            <div class="category">
-              category: generaral category
-            </div>
-            <div class="box2">
-              <%= @company.discription %>
-            </div>
-            <div class="box3">
-              <% if @company.is_indian %>
-                <h4 class="is-indian" style="color:green">This is Indian Company<h4>
-              <% else %>
-                <h4 class="is-indian" style="color:red">This not the Indian Company<h4>
-              <% end %>
-            </div>
-          </div>
-        </div>
-        <hr>
-
+  <div class = "mainbox">
+    <div class = "box0">
+      <div><h3><%= @company.name %></h3></div>
+    </div>
+    <hr>
+    <div class="box1 justify-content-between">
+      <div class="box1-1">
+        <div class = "image" ><img ><%= image_tag(@company.picture_url, width: 600) if @company.picture.present? %></img></div>
       </div>
-    <br>
-    <% if current_user.present? %>
-      <div>
-        <div class="box1-3">
-          <%= link_to 'Show', @company %>
-          <%= link_to 'Edit', edit_company_path(@company) %>
-          <%= link_to 'Destroy', @company, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <div class="box1-2">
+        <div class="category">
+          Category: <%= @company.categories.present? ? @company.categories.pluck(:name) : 'Not added yet' %>
+        </div>
+        <br/>
+        <div class="box2">
+          <%= @company.discription %>
+        </div>
+        <br/>
+        <div class="box3">
+          <% if @company.is_indian %>
+            <h4 class="is-indian" style="color:green">This is Indian Company<h4>
+          <% else %>
+            <h4 class="is-indian" style="color:red">This not the Indian Company<h4>
+          <% end %>
         </div>
       </div>
-    <% end %>
+    </div>
+    <hr>
+  </div>
 <br>
-
+<% if current_user.present? %>
+  <div>
+    <div class="box1-3">
+      <%= link_to 'Show', @company %>
+      <%= link_to 'Edit', edit_company_path(@company) %>
+      <%= link_to 'Destroy', @company, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  </div>
+<% end %>
+<br>
+<br>
 <div>
   <%= button_to "Suggest Indian Company", new_company_url, method: :get, class: 'btn btn-outline-success btn-lg' %>
 </div>
