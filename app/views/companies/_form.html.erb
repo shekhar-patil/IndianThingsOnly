@@ -37,14 +37,14 @@
   <% if current_user.present? %>
     <div class="checkbox">
       <div class="col-md-8">
-        <%= f.check_box :is_approved, { checked: f.object.is_approved }, true, false %> Approved
+        <%= f.check_box :is_approved, { checked: f.object.is_approved }, true %> Approved
       </div>
     </div>
   <% end %>
 
   <div class="checkbox">
     <div class="col-md-8">
-      <%= f.check_box :is_indian, { checked: f.object.is_indian }, true, false %> Is it Indian company
+      <%= f.check_box :is_indian, { checked: f.object.is_indian }, true %> Is it Indian company
     </div>
   </div>
 

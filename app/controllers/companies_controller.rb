@@ -20,7 +20,6 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   def new
     @company = Company.new
-    @categories = Category.all
   end
 
   # GET /companies/1/edit
@@ -47,7 +46,7 @@ class CompaniesController < ApplicationController
   # PATCH/PUT /companies/1.json
   def update
     respond_to do |format|
-      if current_user.present? && @company.update(company_params)
+      if current_user.present? && @company.update(load_params)
         format.html { redirect_to @company, notice: 'Company was successfully updated.' }
         format.json { render :show, status: :ok, location: @company }
       else
@@ -99,18 +98,14 @@ class CompaniesController < ApplicationController
       @company = Company.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
-    def company_params
-      params.require(:company).permit(:name, :description, :key, :picture, :picture_cache, :is_approved, :is_indian)
-    end
-
     def load_params
-      {
-        name: params['company']['name'],
-        description: params['company']['description'],
-        picture: params['company']['picture'],
-        key: params['company']['name'].parameterize.underscore,
-        is_approved: false
-      }
+      hash = {}
+      hash[:name] = params['company']['name'] if params['company']['name'].present?
+      hash[:description] = params['company']['description'] if params['company']['description'].present?
+      hash[:picture] = params['company']['picture'] if params['company']['picture'].present?
+      hash[:key] = params['company']['name'].parameterize.underscore if params['company']['name'].present?
+      hash[:is_approved] = current_user.present? ? (params['company']['is_approved'] == 'true') : false
+      hash[:is_indian] = (params['company']['is_indian'] == 'true')
+      hash
     end
 end
