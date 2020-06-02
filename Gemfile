@@ -21,6 +21,7 @@ gem 'cloudinary'
 gem 'select2-rails'
 gem 'social-share-button'
 gem 'will_paginate'
+gem 'will_paginate-bootstrap4'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 

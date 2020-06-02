@@ -14,7 +14,7 @@ class CompaniesTest < ApplicationSystemTestCase
     visit companies_url
     click_on "New Company"
 
-    fill_in "Discription", with: @company.discription
+    fill_in "Discription", with: @company.description
     fill_in "Name", with: @company.name
     fill_in "Picture", with: @company.picture
     click_on "Create Company"
@@ -27,7 +27,7 @@ class CompaniesTest < ApplicationSystemTestCase
     visit companies_url
     click_on "Edit", match: :first
 
-    fill_in "Discription", with: @company.discription
+    fill_in "Discription", with: @company.description
     fill_in "Name", with: @company.name
     fill_in "Picture", with: @company.picture
     click_on "Update Company"

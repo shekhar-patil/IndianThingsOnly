@@ -26,7 +26,7 @@ body {
   margin-top: 10px;
 }
 
-nav {
+.header {
   color:inherit;
   background-color: cadetblue;
 }
@@ -69,6 +69,10 @@ hr {
 
 .footer .cart-body {
   margin-top: 0px;
+}
+
+.form-div {
+  width: 40%;
 }
 
 @media (min-width: 1000px){
@@ -201,6 +205,10 @@ hr {
 
   .is-indian {
     font-size: 1.2em;
+  }
+
+  .form-div {
+    width: 90%;
   }
 
 }

@@ -5,8 +5,11 @@ class CompaniesController < ApplicationController
   end
 
   def index
-    @companies = Company.where( )
-    @companies = Company.paginate(page: params[:page], per_page: 5)
+    if current_user.present?
+      @companies = Company.includes(:categories).paginate(page: params[:page], per_page: 5)
+    else
+      @companies = Company.where(is_approved: true).includes(:categories).paginate(page: params[:page], per_page: 5)
+    end
   end
 
   # GET /companies/1
@@ -98,13 +101,13 @@ class CompaniesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def company_params
-      params.require(:company).permit(:name, :discription, :key, :picture, :picture_cache, :is_approved, :is_indian)
+      params.require(:company).permit(:name, :description, :key, :picture, :picture_cache, :is_approved, :is_indian)
     end
 
     def load_params
       {
         name: params['company']['name'],
-        discription: params['company']['discription'],
+        description: params['company']['description'],
         picture: params['company']['picture'],
         key: params['company']['name'].parameterize.underscore,
         is_approved: false
