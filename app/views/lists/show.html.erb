@@ -1,0 +1,42 @@
+<center/>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <h3><%= @list.title %></h3>
+</p>
+
+<% @companies.each do |company| %>
+  <div class = "mainbox">
+    <div class = "box0">
+      <div><h3><%= company.name %></h3></div>
+    </div>
+    <hr>
+    <div class="box1 justify-content-between">
+      <div class="box1-1">
+        <div class = "image" ><img ><%= image_tag(company.picture_url, width: 600) if company.picture.present? %></img></div>
+      </div>
+      <div class="box1-2">
+        <div class="category">
+          Category: <%= company.category.present? ? company.category : 'Not added yet' %>
+        </div>
+        <br/>
+        <div class="box2">
+          <%= company.description %>
+        </div>
+        <br/>
+        <div class="box3">
+          <% if company.is_indian %>
+            <h4 class="is-indian" style="color:green">This is Indian Company<h4>
+          <% else %>
+            <h4 class="is-indian" style="color:red">This is not the Indian Company<h4>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </div>
+  <br>
+<div>
+<% end %>
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>

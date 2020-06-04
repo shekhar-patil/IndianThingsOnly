@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :lists
   root to: 'companies#home'
   devise_for :users
   resources :companies
