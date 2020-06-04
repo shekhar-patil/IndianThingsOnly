@@ -58,7 +58,7 @@
     <% end %>
   <% end %>
 
-  <%= will_paginate @clients, list_classes: %w(pagination justify-content-center) %>
+  <%= will_paginate @clients, inner_window: 1, outer_window: 1, list_classes: %w(pagination justify-content-center) %>
 <div>
   <%= button_to "Suggest Indian Company", new_company_url, method: :get, class: 'btn btn-outline-success btn-lg' %>
 </div>
