@@ -1,11 +1,11 @@
 <div class='f-div'>
 <%= form_for @company, local: true, :html => {:class => "form-horizontal center"} do |f| %>
-  <% if company.errors.any? %>
+  <% if @company.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
+      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
 
       <ul>
-      <% company.errors.full_messages.each do |message| %>
+      <% @company.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -13,11 +13,14 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :description, "Company Name:", class: "col-md-4 control-label" %>
+    <%= f.label :name, "Company Name:", class: "col-md-4 control-label" %>
     <div class="col-md-8">
       <%= f.select :name, [], {}, {class: "select2 form-control", data: { init: (f.object.name.present? ? [f.object.name, f.object.name.parameterize.underscore] : []), url: '/company_provider' }} %>
     </div>
   </div>
+
+
+
 
   <div class="form-group">
     <%= f.label :description, "Company Description:", class: "col-md-4 control-label" %>
@@ -34,15 +37,19 @@
     </div>
   </div>
 
+  <div class="form-group">
+    <%= f.select :category, CATEGORIES, prompt: 'Select category' %>
+  </div>
+
   <% if current_user.present? %>
-    <div class="checkbox">
+    <div class="form-group form-check">
       <div class="col-md-8">
         <%= f.check_box :is_approved, { checked: f.object.is_approved }, true %> Approved
       </div>
     </div>
   <% end %>
 
-  <div class="checkbox">
+  <div class="form-group form-check">
     <div class="col-md-8">
       <%= f.check_box :is_indian, { checked: f.object.is_indian }, true %> Is it Indian company
     </div>

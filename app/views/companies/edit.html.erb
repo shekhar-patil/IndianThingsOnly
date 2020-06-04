@@ -1,7 +1,7 @@
 <center>
 <h1>Editing Company</h1>
 
-<%= render 'form', company: @company %>
+<%= render 'form', locals: { company: @company, categories: @categories } %>
 
 <%= link_to 'Show', @company %> |
 <%= link_to 'Back', companies_path %>

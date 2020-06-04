@@ -13,7 +13,7 @@
           </div>
           <div class="box1-2">
             <div class="category">
-              Category: <%= company.categories.present? ? company.categories.pluck(:name) : 'Not added yet' %>
+              Category: <%= company.category.present? ? company.category : 'Not added yet' %>
             </div>
             <br/>
             <div class="box2">

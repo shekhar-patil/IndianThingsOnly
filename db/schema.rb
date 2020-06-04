@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_02_163902) do
+ActiveRecord::Schema.define(version: 2020_06_04_053411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.string "key"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "company_id"
-    t.index ["company_id"], name: "index_categories_on_company_id"
-  end
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
@@ -34,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_06_02_163902) do
     t.string "company_url"
     t.string "key"
     t.boolean "is_indian", default: false
+    t.string "category"
   end
 
   create_table "users", force: :cascade do |t|

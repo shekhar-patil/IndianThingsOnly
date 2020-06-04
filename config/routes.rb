@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root to: 'companies#home'
-  resources :categories
   devise_for :users
   resources :companies
 

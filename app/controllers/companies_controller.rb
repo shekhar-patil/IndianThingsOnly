@@ -6,9 +6,9 @@ class CompaniesController < ApplicationController
 
   def index
     if current_user.present?
-      @companies = Company.includes(:categories).paginate(page: params[:page], per_page: 5)
+      @companies = Company.paginate(page: params[:page], per_page: 5)
     else
-      @companies = Company.where(is_approved: true).includes(:categories).paginate(page: params[:page], per_page: 5)
+      @companies = Company.where(is_approved: true).paginate(page: params[:page], per_page: 5)
     end
   end
 
@@ -106,6 +106,7 @@ class CompaniesController < ApplicationController
       hash[:key] = params['company']['name'].parameterize.underscore if params['company']['name'].present?
       hash[:is_approved] = current_user.present? ? (params['company']['is_approved'] == 'true') : false
       hash[:is_indian] = (params['company']['is_indian'] == 'true')
+      hash[:category] = params['company']['category'] if CATEGORIES.include?(params['company']['category'])
       hash
     end
 end
