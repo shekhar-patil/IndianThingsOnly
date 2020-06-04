@@ -1,6 +1,20 @@
 <center/>
+
 <p id="notice"><%= notice %></p>
   <tbody>
+    <div class="filter-container my-4">
+      <button class="filter-btn btn dropdown-toggle mr-4" type="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">Filter</button>
+      <div class="dropdown-menu">
+        <%= simple_form_for :search, url: companies_path, method: "GET" do |f| %>
+          <div class="custom-control custom-checkbox">
+            <%= f.input :categories, label: "Category",  collection: CATEGORIES, as: :check_boxes, checked: @filter, label: false, item_wrapper_class: 'checkbox_container' %>
+            <%= f.submit "Search", class: "btn btn-primary btn-sm" %>
+            <%= link_to "Reset", companies_path  %>
+          </div>
+        <% end %>
+      </div>
+    </div>
     <% @companies.each do |company| %>
       <div class = "mainbox">
         <div class = "box0">

@@ -5,10 +5,21 @@ class CompaniesController < ApplicationController
   end
 
   def index
+    if params["search"].present?
+      @filter = params["search"]["categories"].flatten.reject(&:blank?)
+      filter = @filter
+    end
+
+    unless filter.present?
+      filter = [nil]
+      filter << CATEGORIES.dup
+      filter.flatten!
+    end
+
     if current_user.present?
-      @companies = Company.paginate(page: params[:page], per_page: 5)
+      @companies = Company.where(category: filter).paginate(page: params[:page], per_page: 5)
     else
-      @companies = Company.where(is_approved: true).paginate(page: params[:page], per_page: 5)
+      @companies = Company.where(category: filter, is_approved: true).paginate(page: params[:page], per_page: 5)
     end
   end
 
