@@ -1,5 +1,5 @@
 <div class="header">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-2">
     <%= button_to 'INDIAN Things', root_path, method: :get, class: 'btn btn-outline-primary'%>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -7,16 +7,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-4 mr-auto">
         <li class="nav-item">
-          <%= link_to 'Companies', companies_path, class: 'nav-link' %>
+          <h6><%= link_to 'Companies', companies_path, class: 'nav-link' %></h6>
         </li>
         <li class="nav-item">
-          <%= link_to 'Lists', lists_path, class: 'nav-link' %>
+          <h6><%= link_to 'Lists', lists_path, class: 'nav-link' %></h6>
         </li>
         <li class="nav-item">
-          <%= link_to 'Suggest Company', new_company_path, class: 'nav-link' %>
+          <h6><%= link_to 'Suggest Company', new_company_path, class: 'nav-link' %></h6>
         </li>
       </ul>
-      <%= link_to 'About us', new_company_path, class: 'nav-link' %>
+      <h6><%= link_to 'About us', new_company_path, class: 'nav-link' %></h6>
     </div>
   </nav>
 </div>
