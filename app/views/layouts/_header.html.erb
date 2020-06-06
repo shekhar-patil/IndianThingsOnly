@@ -5,26 +5,18 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav ml-4 mr-auto">
         <li class="nav-item">
           <%= link_to 'Companies', companies_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
           <%= link_to 'Lists', lists_path, class: 'nav-link' %>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-            <%= link_to 'Suggest Indian Company', new_company_path, class: 'dropdown-item' %>
-            <%# <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a> %>
-          </div>
+        <li class="nav-item">
+          <%= link_to 'Suggest Company', new_company_path, class: 'nav-link' %>
         </li>
       </ul>
-      <%= link_to 'About us', new_company_path, class: 'my-2 my-lg-0' %>
+      <%= link_to 'About us', new_company_path, class: 'nav-link' %>
     </div>
   </nav>
 </div>
