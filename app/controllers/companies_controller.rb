@@ -4,6 +4,9 @@ class CompaniesController < ApplicationController
   def home
   end
 
+  def about_us
+  end
+
   def index
     if params["search"].present?
       @filter = params["search"]["categories"].flatten.reject(&:blank?)

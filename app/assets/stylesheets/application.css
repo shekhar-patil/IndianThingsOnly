@@ -16,6 +16,28 @@
  *= require select2-bootstrap
 
  */
+.jumbotron{
+  background: url("bg.jpg") no-repeat center center;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
+}
+.list-title-box {
+  position: relative;
+  display: inline-block; /* Make the width of box same as image */
+}
+.list-title-box .title-text{
+  position: absolute;
+  z-index: 999;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 90%; /* Adjust this value to move the positioned div up and down */
+  text-align: left;
+  width: 70%; /* Set the width of the positioned div */
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -30,15 +52,6 @@ body {
 .header {
   color:inherit;
   background-color: cadetblue;
-}
-
-header{
-  background-color: cadetblue;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  width: 100px;
 }
 
 .love-tag {
@@ -130,6 +143,10 @@ hr {
     min-height: 10em;
     justify-content: center;
     vertical-align: middle;
+  }
+
+  .lists-container {
+    width: 70%;
   }
 }
 

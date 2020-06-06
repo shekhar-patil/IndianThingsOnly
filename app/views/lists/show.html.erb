@@ -1,15 +1,15 @@
 <center/>
-<p id="notice"><%= notice %></p>
 
-<p>
-  <h2><%= @list.title %></h2>
-</p>
-<br/><br/>
+<div class="jumbotron" style="background-image: url(<%= @list.picture_url %>); background-size: 100%; background-size: cover;">
+   <div class="container">
+      <h2 class="title-text"><%= @list.title %></h2>
+   </div>
+</div>
 
-<% @companies.each do |company| %>
+<% @companies.each_with_index do |company, index| %>
   <div class = "mainbox">
     <div class = "box0">
-      <div><h3><%= company.name %></h3></div>
+      <div><h3><%= index + 1 %>. <%= company.name %></h3></div>
     </div>
     <hr>
     <div class="box1 justify-content-between">
@@ -39,5 +39,4 @@
   <br>
 <div>
 <% end %>
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+

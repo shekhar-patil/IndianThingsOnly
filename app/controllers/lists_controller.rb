@@ -5,7 +5,7 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    @lists = List.all
+    @lists = List.paginate(page: params[:page], per_page: 10)
   end
 
   # GET /lists/1
@@ -73,10 +73,11 @@ class ListsController < ApplicationController
     def list_params
       hash = {}
       hash[:title] = params['list']['title'] if params['list']['title'].present?
-      if params['list']['company_ids'].present?
-        company_keys = params['list']['company_ids'].reject(&:blank?).map(&:parameterize).map(&:underscore) rescue []
+      if (company_ids = params['list']['company_ids'].reject(&:blank?)).present?
+        company_keys = company_ids.map(&:parameterize).map(&:underscore) rescue []
         hash[:company_ids] = Company.where(key: company_keys).pluck(:id)
       end
+      hash[:picture] = params['list']['picture'] if params['list']['picture'].present?
       hash
     end
 end

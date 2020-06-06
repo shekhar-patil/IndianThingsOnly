@@ -1,10 +1,22 @@
 <center/>
-<p id="notice"><%= notice %></p>
+<div class="lists-container">
+  <p id="notice"><%= notice %></p>
+  <h1>Most interesting lists</h1>
+  <br/>
+  <div class="row">
+    <% @lists.each do |list| %>
+      <% color = %w[primary secondary success danger warning info dark].sample %>
+        <div class="col-sm-6">
+          <%= link_to list_path(list) do %>
+            <div class="card text-white bg-<%= color %> mb-4">
+              <div class="card-body">
+                <h5 class="card-title"><%= list.title %></h5>
+              </div>
+            </div>
+          <% end %>
+        </div>
+    <% end %>
+  </div>
+</div>
+<%= will_paginate @clients, inner_window: 1, outer_window: 1, list_classes: %w(pagination justify-content-center) %>
 
-<h1>Interesting Lists</h1>
-<% @lists.each do |list| %>
-  <h3><%= link_to list.title, list %><h3>
-<% end %>
-<br>
-
-<%= link_to 'New List', new_list_path %>
