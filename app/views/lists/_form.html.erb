@@ -20,6 +20,10 @@
     <%= form.select :company_ids, [], {}, { class: "select2", multiple: true, placeholder: 'Search company', data: { url: '/company_provider' }} %>
   </div>
 
+  <div class='field'>
+    <%= form.file_field :picture %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

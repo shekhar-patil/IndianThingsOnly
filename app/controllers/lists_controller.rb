@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
+  before_action :login_requied, except: [:show, :index]
 
   # GET /lists
   # GET /lists.json
