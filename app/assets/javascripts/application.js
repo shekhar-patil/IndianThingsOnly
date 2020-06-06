@@ -20,6 +20,7 @@
 //= require libs/common.js
 //= require social-share-button
 //= require_tree .
+//= require flickity
 
 $(document).ready(function(){
   select2($('.select2'))

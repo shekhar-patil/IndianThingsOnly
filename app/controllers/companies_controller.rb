@@ -2,6 +2,7 @@ class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
   def home
+    @lists = List.order("created_at DESC").limit(5)
   end
 
   def about_us

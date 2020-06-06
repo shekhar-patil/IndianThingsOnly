@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.5.0",
+    "flickity": "^2.2.1",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
     "select2": "^4.0.13"
